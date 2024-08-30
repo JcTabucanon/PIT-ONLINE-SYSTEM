@@ -11,7 +11,7 @@
 <body>
 <section>
     <div class="container">
-        <h1 style="width: 100%; text-align:center;">Product List</h1>
+        <h1 style="width: 100%; text-align:center; padding: 20px 0 20px 0">Product List</h1>
          <!-- Button to trigger the Create Product modal -->
          <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal" style="float: right">Create New Product</button>
         <table class="table">
