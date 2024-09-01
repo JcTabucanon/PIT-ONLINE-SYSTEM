@@ -19,3 +19,5 @@ Route::put('products/{product}', [ProductController::class, 'update'])->name('pr
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 
+
+
