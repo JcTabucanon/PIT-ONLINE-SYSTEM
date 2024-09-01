@@ -19,5 +19,14 @@ Route::put('products/{product}', [ProductController::class, 'update'])->name('pr
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 
+// Product V2 
+Route::get('/productV2', [ProductController::class, 'indexV2']);
+Route::get('/product/list', [ProductController::class, 'getProduct']);
+Route::post('/product/add', [ProductController::class, 'createProduct']);
+Route::put('/products/update/{id}', [ProductController::class, 'updateProduct']);
+Route::delete('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
+
+
+
 
 
