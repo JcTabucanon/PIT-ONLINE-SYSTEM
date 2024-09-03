@@ -72,7 +72,7 @@
         $.ajax({
             url: "{{ url('/product/list') }}",
             type: 'GET',
-        }).then(function (response) {            
+        }).then(function (response) {
             productTable.clear().draw();
             response.data.forEach(function (item) {
                 productTable.row.add([
@@ -148,34 +148,49 @@
         });
     }
 
-    function deleteProduct(byVal){
-        const id = byVal.data('id'); // Retrieve the stored product ID
-        const data = {
-            _token: '{{ csrf_token() }}'
+    function deleteProduct(byVal) {
+    const id = byVal.data('id'); // Retrieve the stored product ID
+    const data = {
+        _token: '{{ csrf_token() }}'
+    };
+
+    // First, show a confirmation dialog
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you really want to delete this product? This action cannot be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+    }).then((result) => {
+        // If the user confirmed the deletion
+        if (result.isConfirmed) {
+            // Proceed with the AJAX request
+            $.ajax({
+                url: `/products/delete/${id}`, // Delete URL based on the ID
+                type: 'DELETE',
+                data: data,
+            }).then(function(response) {
+                if (response.productName) {
+                    Swal.fire({
+                        title: 'Remove Successful',
+                        text: `"${response.productName}" has been successfully removed.`,
+                        icon: 'success',
+                        confirmButtonText: 'Close'
+                    });
+                    getProduct(); // Refresh the product list
+                }
+                if (response.error) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: response.error,
+                        icon: 'error',
+                        confirmButtonText: 'Close'
+                    });
+                }
+            });
         }
-        $.ajax({
-            url: `/products/delete/${id}`, // Delete URL based on the ID
-            type: 'DELETE',
-            data: data,
-        }).then(function(response) {
-            if (response.productName) {
-                Swal.fire({
-                    title: 'Remove Successful',
-                    text: `"${response.productName}" has been successfully removed.`,
-                    icon: 'success',
-                    confirmButtonText: 'Close'
-                });
-                getProduct(); // Refresh the product list
-            }
-            if (response.error) {
-                Swal.fire({
-                    title: 'Error',
-                    text: response.error,
-                    icon: 'error',
-                    confirmButtonText: 'Close'
-                });
-            }
-        });
-    }
+    });
+}
 </script>
 @endsection
