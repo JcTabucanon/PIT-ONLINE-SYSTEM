@@ -134,6 +134,13 @@
     </div>
 </div>
 <!-- End of Create Modal -->
+<section>
+<div class="container" style="display: flex; justify-content:center; align-items:center; flex-direction:column; padding: 50px 20px 50px 20px;">
+    <h1>Visit Us at Our Office</h1>
+    <p>Here’s our location:</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.3515838815213!2d121.01435821583095!3d14.563404903743427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90a6e9ac007%3A0x2976ef1889c85b11!2sHeart%20Building%2C%207461%20Bagtikan%20Street%2C%20Makati%2C%201203%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1725413194725!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</section>
 </body>
 </html>
 

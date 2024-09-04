@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
  use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TestController;
+ use Illuminate\Support\Facades\Http;
+ use App\Http\Controllers\AppointmentController;
+ use App\Http\Controllers\PatientController;
 
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
@@ -19,13 +21,16 @@ Route::put('products/{product}', [ProductController::class, 'update'])->name('pr
 Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 
-// Product V2 
+// Product V2
 Route::get('/productV2', [ProductController::class, 'indexV2']);
 Route::get('/product/list', [ProductController::class, 'getProduct']);
 Route::post('/product/add', [ProductController::class, 'createProduct']);
 Route::put('/products/update/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
 
+// clinic system
+Route::resource('appointments', AppointmentController::class);
+Route::resource('patients', PatientController::class);
 
 
 

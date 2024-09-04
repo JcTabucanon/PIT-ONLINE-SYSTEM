@@ -14,7 +14,7 @@
 
     {{-- table using DataTbales  --}}
     <div class="ms-2 me-2">
-        <table id="table">
+        <table id="table" class="table">
             <thead>
                 <tr>
                     <td>Product Name</td>
@@ -80,8 +80,8 @@
                     item.price,
                     item.description,
                     `
-                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-description="${item.description}" data-bs-target="#editModal">Edit</button>
-                        <button class="btn btn-sm btn-danger deleteProduct" data-id="${item.id}">Delete</button>
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-description="${item.description}" data-bs-target="#editModal">Edit</button>
+                        <button class="btn btn-danger deleteProduct" data-id="${item.id}">Delete</button>
                     `
                 ]).draw(false);
             });
