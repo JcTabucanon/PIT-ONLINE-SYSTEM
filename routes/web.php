@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
  use App\Http\Controllers\ProductController;
  use Illuminate\Support\Facades\Http;
- use App\Http\Controllers\AppointmentController;
- use App\Http\Controllers\PatientController;
+
 
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
@@ -27,11 +26,6 @@ Route::get('/product/list', [ProductController::class, 'getProduct']);
 Route::post('/product/add', [ProductController::class, 'createProduct']);
 Route::put('/products/update/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('/products/delete/{id}', [ProductController::class, 'deleteProduct']);
-
-// clinic system
-Route::resource('appointments', AppointmentController::class);
-Route::resource('patients', PatientController::class);
-
 
 
 
