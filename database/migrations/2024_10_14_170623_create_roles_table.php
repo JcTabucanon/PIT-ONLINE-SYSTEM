@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('role', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('price');// Corrected: Use string() for VARCHAR columns
+            $table->string('name', 255);
+            $table->string('description', 255);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products'); // Correctly drops the table during rollback
+        Schema::dropIfExists('role');
     }
 };

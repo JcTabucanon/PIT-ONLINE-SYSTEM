@@ -13,18 +13,36 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->rememberToken();
             $table->timestamps();
+
+            // add foreign key 
+            $table
+                ->foreignId('role_id')
+                ->nullable()
+                ->constrained('roles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade')
+                ->name('FK_role_foreign_key');
+
+            $table
+                ->foreignId('person_id')
+                ->nullable()
+                ->constrained('person')
+                ->onDelete('cascade')
+                ->onUpdate('cascade')
+                ->name('FK_person_foreign_key');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->id();
+            $table->string('email')->unique();
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->nullable();    
         });
 
         Schema::create('sessions', function (Blueprint $table) {
